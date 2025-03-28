@@ -57,7 +57,7 @@ public class SistemaMetro : MonoBehaviour
 		//CaminoRecorrido main = new CaminoRecorrido();
 		//main.SetEstacionActual(EstacionesConTransbordes.Pantitlan);//main.AddEstacionToRecorridas(EstacionesConTransbordes.Pantitlan);
 		//EstacionActual = main;
-		EstacionesVisitadas.Add(EstacionActual.estacionActualSO);
+		//EstacionesVisitadas.Add(EstacionActual.estacionActualSO);
 		for (int i = 0; i < MaxIterations; i++)
 		{
 			bool found = AStar();
@@ -93,8 +93,6 @@ public class SistemaMetro : MonoBehaviour
 			{
 				estacionesVisitadasEnum.Add(estacionEnum.Estacion);
 			}
-
-
 
             if (estacionesEnCamino.Contains(EstacionActualEnum))
 			{
@@ -155,7 +153,7 @@ public class SistemaMetro : MonoBehaviour
 
 
 		//3.1.- Cambiarse al nuevo 
-		EstacionesVisitadas.Add(NuevaEstacion);
+		EstacionesVisitadas.Add(EstacionActual.estacionActualSO);
 		EstacionActual.SetEstacionActual(NuevaEstacion);
 		EstacionActual.AddToCostoCaminoRecorrido(caminoMenosCostoso.costo);
 
