@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de27711359a80c4d955231b04f02bdd, type: 3}
+  m_Name: Mixcoac-Zapata
+  m_EditorClassIdentifier: 
+  Estaciones: 1900000018000000
+  EstacionesSO:
+  - {fileID: 11400000, guid: 0a2517f60cfedc84ea623d0df1d2b8a4, type: 2}
+  - {fileID: 11400000, guid: 601118e5c8c1b11409669583306edf39, type: 2}
+  costo: 6

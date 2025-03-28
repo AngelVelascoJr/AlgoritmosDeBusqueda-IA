@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de27711359a80c4d955231b04f02bdd, type: 3}
+  m_Name: Hidalgo-Guerrero
+  m_EditorClassIdentifier: 
+  Estaciones: 0b00000009000000
+  EstacionesSO:
+  - {fileID: 11400000, guid: 2bd04489556ddc8429b8cf204fe01d4f, type: 2}
+  - {fileID: 11400000, guid: c4f07053c702b004181bb765b2e2952a, type: 2}
+  costo: 2
