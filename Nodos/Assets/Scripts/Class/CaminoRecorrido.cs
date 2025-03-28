@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 [Serializable]
 public class CaminoRecorrido
 {
-    [Obsolete] public SistemaMetro.EstacionesConTransbordes estacionActual;
+    [ReadOnly] public SistemaMetro.EstacionesConTransbordes estacionActualVisual;
     public CostoNodoSO estacionActualSO;
     public int CostoCaminoRecorrido = 0;
 
     public bool PuedeSeguir = true;
+
+    public CaminoRecorrido(CostoNodoSO nodoSO, int CostoCaminoRecorrido)
+    {
+        estacionActualSO = nodoSO;
+        this.CostoCaminoRecorrido = CostoCaminoRecorrido;    
+    }
 
     public void DetenerRecorrido()
     {
@@ -31,16 +38,6 @@ public class CaminoRecorrido
         return estacionesRecorridas;
     }*/
 
-    [Obsolete] public SistemaMetro.EstacionesConTransbordes GetEstacionActual()
-    {
-        return estacionActual;
-    }
-
-    [Obsolete]public void SetEstacionActual(SistemaMetro.EstacionesConTransbordes Estacion)
-    {
-        estacionActual = Estacion;
-    }
-
     public CostoNodoSO GetEstacionActualSO()
     {
         return estacionActualSO;
@@ -49,6 +46,7 @@ public class CaminoRecorrido
     public void SetEstacionActual(CostoNodoSO Estacion)
     {
         estacionActualSO = Estacion;
+        estacionActualVisual = estacionActualSO.Estacion;
     }
 
     public void AddToCostoCaminoRecorrido(int Costo)

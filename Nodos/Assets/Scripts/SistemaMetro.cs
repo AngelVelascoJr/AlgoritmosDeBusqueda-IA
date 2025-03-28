@@ -44,7 +44,7 @@ public class SistemaMetro : MonoBehaviour
 	[SerializeField] private List<CostoCaminoSO> caminos;
 
 	[SerializeField] private CaminoRecorrido EstacionActual;
-	[SerializeField] private List<CostoNodoSO> EstacionesVisitadas;
+	[SerializeField] private List<CaminoRecorrido> EstacionesVisitadas;
 	[SerializeField] private List<CostoCaminoSO> caminosPreviosNoRevisados;
 
 	[SerializeField] private int MaxIterations;
@@ -91,7 +91,7 @@ public class SistemaMetro : MonoBehaviour
 			var estacionesVisitadasEnum = new List<EstacionesConTransbordes>();
 			foreach (var estacionEnum in EstacionesVisitadas)
 			{
-				estacionesVisitadasEnum.Add(estacionEnum.Estacion);
+				estacionesVisitadasEnum.Add(estacionEnum.estacionActualSO.Estacion);
 			}
 
             if (estacionesEnCamino.Contains(EstacionActualEnum))
@@ -153,7 +153,7 @@ public class SistemaMetro : MonoBehaviour
 
 
 		//3.1.- Cambiarse al nuevo 
-		EstacionesVisitadas.Add(EstacionActual.estacionActualSO);
+		EstacionesVisitadas.Add(new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido));
 		EstacionActual.SetEstacionActual(NuevaEstacion);
 		EstacionActual.AddToCostoCaminoRecorrido(caminoMenosCostoso.costo);
 
