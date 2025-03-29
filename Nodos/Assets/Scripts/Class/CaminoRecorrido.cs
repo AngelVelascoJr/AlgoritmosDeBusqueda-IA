@@ -6,16 +6,18 @@ using UnityEngine;
 [Serializable]
 public class CaminoRecorrido
 {
-    [ReadOnly] public SistemaMetro.EstacionesConTransbordes estacionActualVisual;
+    public SistemaMetro.EstacionesConTransbordes estacionActualVisual;
     public CostoNodoSO estacionActualSO;
+    public List<CostoCaminoSO> CaminosRestantesPorRecorrer;
     public int CostoCaminoRecorrido = 0;
 
     public bool PuedeSeguir = true;
 
-    public CaminoRecorrido(CostoNodoSO nodoSO, int CostoCaminoRecorrido)
+    public CaminoRecorrido(CostoNodoSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer)
     {
         estacionActualSO = nodoSO;
         this.CostoCaminoRecorrido = CostoCaminoRecorrido;    
+        CaminosRestantesPorRecorrer = caminosPorRecorrer;
     }
 
     public void DetenerRecorrido()
