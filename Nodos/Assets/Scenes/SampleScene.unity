@@ -460,8 +460,8 @@ MonoBehaviour:
     CostoCaminoRecorrido: 0
     PuedeSeguir: 1
   EstacionesVisitadas: []
-  caminosPreviosNoRevisados: []
-  MaxIterations: 2
+  caminosPreviosYaRevisados: []
+  MaxIterations: 40
 --- !u!4 &1654976719
 Transform:
   m_ObjectHideFlags: 0

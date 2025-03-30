@@ -49,7 +49,7 @@ public class SistemaMetro : MonoBehaviour
 
     [SerializeField] private CaminoRecorrido EstacionActual;
     [SerializeField] private List<CaminoRecorrido> EstacionesVisitadas;
-    [SerializeField] private List<CostoCaminoSO> caminosPreviosNoRevisados;
+    [SerializeField] private List<CostoCaminoSO> caminosPreviosYaRevisados;
 
     [SerializeField] private int MaxIterations;
 
@@ -67,7 +67,7 @@ public class SistemaMetro : MonoBehaviour
             bool found = AStar();
             if (found)
             {
-                Debug.Log($"found after {i} iterations");
+                Debug.Log($"<color=lime>found after {i} iterations</color>");
                 break;
             }
         }
@@ -98,7 +98,12 @@ public class SistemaMetro : MonoBehaviour
         //3.- Moverse al nodo con menor costo, almacenar el costo del camino hasta ese momento y el camino seguido 
         ModerseAOtroNodo(caminoMenosCostoso, NuevaEstacion);
 
-        //4.- repetir
+        //4.- Verificar si ese nodo es el objetivo, si si terminoar, si no, repetir
+        foreach (var estacionObjetivo in estacionesObjetivo)
+        {
+            if(estacionObjetivo == EstacionActual.estacionActualSO.Estacion)
+                return true;
+        }
         return false;
     }
     private void BuscarCaminosHijosNuevos()
@@ -108,6 +113,12 @@ public class SistemaMetro : MonoBehaviour
             var estacionesQueTieneUnCamino = Camino.GetEstaciones().ToList();
             //si el camino no tiene la estacion en la que estamos, continuar la busqueda
             if (!estacionesQueTieneUnCamino.Contains(EstacionActual.estacionActualSO))
+            {
+                continue;
+            }
+
+            //si el camino ya fue revisado, continuar
+            if(caminosPreviosYaRevisados.Contains(Camino))
             {
                 continue;
             }
@@ -206,6 +217,7 @@ public class SistemaMetro : MonoBehaviour
                     }
                 }
                 estacion.CaminosYaRecorridos.Add(estacion.CaminosRestantesPorRecorrer[index]);
+                caminosPreviosYaRevisados.Add(estacion.CaminosRestantesPorRecorrer[index]);
                 estacion.CaminosRestantesPorRecorrer.RemoveAt(index);
                 break;
             }
