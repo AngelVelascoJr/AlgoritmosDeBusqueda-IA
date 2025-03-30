@@ -456,6 +456,7 @@ MonoBehaviour:
     estacionActualVisual: 0
     estacionActualSO: {fileID: 11400000, guid: 7ba4d3f51ea27b3418576bc4f5271063, type: 2}
     CaminosRestantesPorRecorrer: []
+    CaminosYaRecorridos: []
     CostoCaminoRecorrido: 0
     PuedeSeguir: 1
   EstacionesVisitadas: []

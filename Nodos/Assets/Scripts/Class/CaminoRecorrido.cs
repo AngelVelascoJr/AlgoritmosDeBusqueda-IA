@@ -7,17 +7,19 @@ using UnityEngine;
 public class CaminoRecorrido
 {
     public SistemaMetro.EstacionesConTransbordes estacionActualVisual;
-    public CostoNodoSO estacionActualSO;
+    public CostoEstacionSO estacionActualSO;
     public List<CostoCaminoSO> CaminosRestantesPorRecorrer;
+    public List<CostoCaminoSO> CaminosYaRecorridos;
     public int CostoCaminoRecorrido = 0;
 
     public bool PuedeSeguir = true;
 
-    public CaminoRecorrido(CostoNodoSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer)
+    public CaminoRecorrido(CostoEstacionSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer)
     {
         estacionActualSO = nodoSO;
         this.CostoCaminoRecorrido = CostoCaminoRecorrido;    
         CaminosRestantesPorRecorrer = caminosPorRecorrer;
+        CaminosYaRecorridos = new();
     }
 
     public void DetenerRecorrido()
@@ -40,12 +42,12 @@ public class CaminoRecorrido
         return estacionesRecorridas;
     }*/
 
-    public CostoNodoSO GetEstacionActualSO()
+    public CostoEstacionSO GetEstacionActualSO()
     {
         return estacionActualSO;
     }
 
-    public void SetEstacionActual(CostoNodoSO Estacion)
+    public void SetEstacionActual(CostoEstacionSO Estacion)
     {
         estacionActualSO = Estacion;
         estacionActualVisual = estacionActualSO.Estacion;
@@ -55,7 +57,5 @@ public class CaminoRecorrido
     {
         CostoCaminoRecorrido += Costo;
     }
-
-
 
 }
