@@ -238,27 +238,19 @@ public class SistemaMetro : MonoBehaviour
     
     private void MoverseAOtroNodo(CostoCaminoSO caminoMenosCostoso, CostoEstacionSO NuevaEstacion, CaminoRecorrido caminoMejor)
     {
-        for (int i = 0; i < EstacionesVisitadas.Count; i++)
+        int index = 0;
+        for (int j = 0; j < caminoMejor.CaminosRestantesPorRecorrer.Count; j++)
         {
-            CaminoRecorrido estacion = EstacionesVisitadas[i];
-            if (estacion.estacionActualSO == caminoMejor.estacionActualSO)
+            if (caminoMejor.CaminosRestantesPorRecorrer[j] == caminoMenosCostoso)
             {
-                int index = 0;
-                for (int j = 0; j < estacion.CaminosRestantesPorRecorrer.Count; j++)
-                {
-                    if (estacion.CaminosRestantesPorRecorrer[j] == caminoMenosCostoso)
-                    {
-                        index = j;
-                        break;
-                    }
-                }
-                estacion.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
-                estacion.CaminosYaRecorridos.Add(estacion.CaminosRestantesPorRecorrer[index]);
-                caminosPreviosYaRevisados.Add(estacion.CaminosRestantesPorRecorrer[index]);
-                estacion.CaminosRestantesPorRecorrer.RemoveAt(index);
+                index = j;
                 break;
             }
         }
+        caminoMejor.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
+        caminoMejor.CaminosYaRecorridos.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
+        caminosPreviosYaRevisados.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
+        caminoMejor.CaminosRestantesPorRecorrer.RemoveAt(index);        
 
         EstacionActual.SetEstacionActual(NuevaEstacion);
         EstacionActual.AddToCostoCaminoRecorrido(caminoMenosCostoso.costo);
