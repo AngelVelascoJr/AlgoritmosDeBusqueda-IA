@@ -16,13 +16,13 @@ public class CaminoRecorrido
 
     public bool PuedeSeguir = true;
 
-    public CaminoRecorrido(CostoEstacionSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer)
+    public CaminoRecorrido(CostoEstacionSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer, List<CostoEstacionSO> ListaEstacionesRecorridasEnEsteCiclo)
     {
         estacionActualSO = nodoSO;
         this.CostoCaminoRecorrido = CostoCaminoRecorrido;    
         CaminosRestantesPorRecorrer = caminosPorRecorrer;
         CaminosYaRecorridos = new();
-        ListaEstacionesRecorridasEnEsteCiclo = new();
+        this.ListaEstacionesRecorridasEnEsteCiclo = ListaEstacionesRecorridasEnEsteCiclo;
     }
 
     public void DetenerRecorrido()

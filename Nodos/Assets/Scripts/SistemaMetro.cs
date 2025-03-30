@@ -62,10 +62,6 @@ public class SistemaMetro : MonoBehaviour
     {
         //RevisarDuplicados(estaciones);
         //RevisarCaminosDuplicados(caminos);
-        //CaminoRecorrido main = new CaminoRecorrido();
-        //main.SetEstacionActual(EstacionesConTransbordes.Pantitlan);//main.AddEstacionToRecorridas(EstacionesConTransbordes.Pantitlan);
-        //EstacionActual = main;
-        //EstacionesVisitadas.Add(EstacionActual.estacionActualSO);
         if(!StepByStep)
         {
             for (int i = 0; i < MaxIterations; i++)
@@ -165,7 +161,7 @@ public class SistemaMetro : MonoBehaviour
             }
             if (!containsCamino)
             {
-                var camRecorrido = new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, new List<CostoCaminoSO>());
+                var camRecorrido = new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, new List<CostoCaminoSO>(), EstacionActual.ListaEstacionesRecorridasEnEsteCiclo);
                 camRecorrido.CaminosRestantesPorRecorrer.Add(Camino);
                 EstacionesVisitadas.Add(camRecorrido);
             }
@@ -234,7 +230,7 @@ public class SistemaMetro : MonoBehaviour
 
         log2 += $"<color=magenta>Camino a seguir: {caminoMenosCostoso.EstacionesSO[0].Estacion.ToString()} a {caminoMenosCostoso.EstacionesSO[1].Estacion.ToString()}</color>\n";
         log2 += $"\tMenor costo: {caminoMenosCostoso.costo + NuevaEstacion.costo}";
-        log2 += $"\tcamino total menor: {caminoMejor.CostoCaminoRecorrido} + {caminoMenosCostoso.costo} + {NuevaEstacion.costo} = {EstacionActual.CostoCaminoRecorrido + caminoMenosCostoso.costo + NuevaEstacion.costo}: Estacion a moverse: <color=cyan>{NuevaEstacion.Estacion.ToString()}</color>\n";
+        log2 += $"\tcamino total menor: {caminoMejor.CostoCaminoRecorrido} + {caminoMenosCostoso.costo} + {NuevaEstacion.costo} = {caminoMejor.CostoCaminoRecorrido + caminoMenosCostoso.costo + NuevaEstacion.costo}: Estacion a moverse: <color=cyan>{NuevaEstacion.Estacion.ToString()}</color>\n";
 
         Debug.Log(log2);
 
@@ -242,14 +238,10 @@ public class SistemaMetro : MonoBehaviour
     
     private void MoverseAOtroNodo(CostoCaminoSO caminoMenosCostoso, CostoEstacionSO NuevaEstacion, CaminoRecorrido caminoMejor)
     {
-        //EstacionesVisitadas.Add(new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, EstacionActual.CaminosRestantesPorRecorrer));
-
-        //EstacionesVisitadas[0].CaminosYaRecorridos.Add(EstacionesVisitadas[0].CaminosRestantesPorRecorrer[0]);
-        //EstacionesVisitadas[0].CaminosRestantesPorRecorrer.RemoveAt(0);
         for (int i = 0; i < EstacionesVisitadas.Count; i++)
         {
             CaminoRecorrido estacion = EstacionesVisitadas[i];
-            if (estacion.estacionActualSO == EstacionActual.estacionActualSO)
+            if (estacion.estacionActualSO == caminoMejor.estacionActualSO)
             {
                 int index = 0;
                 for (int j = 0; j < estacion.CaminosRestantesPorRecorrer.Count; j++)
@@ -260,6 +252,7 @@ public class SistemaMetro : MonoBehaviour
                         break;
                     }
                 }
+                estacion.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
                 estacion.CaminosYaRecorridos.Add(estacion.CaminosRestantesPorRecorrer[index]);
                 caminosPreviosYaRevisados.Add(estacion.CaminosRestantesPorRecorrer[index]);
                 estacion.CaminosRestantesPorRecorrer.RemoveAt(index);
