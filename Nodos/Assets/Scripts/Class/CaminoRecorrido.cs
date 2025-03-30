@@ -12,6 +12,8 @@ public class CaminoRecorrido
     public List<CostoCaminoSO> CaminosYaRecorridos;
     public int CostoCaminoRecorrido = 0;
 
+    public List<CostoEstacionSO> ListaEstacionesRecorridasEnEsteCiclo;
+
     public bool PuedeSeguir = true;
 
     public CaminoRecorrido(CostoEstacionSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer)
@@ -20,6 +22,7 @@ public class CaminoRecorrido
         this.CostoCaminoRecorrido = CostoCaminoRecorrido;    
         CaminosRestantesPorRecorrer = caminosPorRecorrer;
         CaminosYaRecorridos = new();
+        ListaEstacionesRecorridasEnEsteCiclo = new();
     }
 
     public void DetenerRecorrido()

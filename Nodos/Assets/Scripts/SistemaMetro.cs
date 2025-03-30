@@ -53,6 +53,10 @@ public class SistemaMetro : MonoBehaviour
 
     [SerializeField] private int MaxIterations;
 
+    [SerializeField] private bool StepByStep;
+    [SerializeField] private bool Step = false;
+    [SerializeField] private int SSIterationsVisual = 0;
+
 
     private void Start()
     {
@@ -62,13 +66,33 @@ public class SistemaMetro : MonoBehaviour
         //main.SetEstacionActual(EstacionesConTransbordes.Pantitlan);//main.AddEstacionToRecorridas(EstacionesConTransbordes.Pantitlan);
         //EstacionActual = main;
         //EstacionesVisitadas.Add(EstacionActual.estacionActualSO);
-        for (int i = 0; i < MaxIterations; i++)
+        if(!StepByStep)
         {
-            bool found = AStar();
-            if (found)
+            for (int i = 0; i < MaxIterations; i++)
             {
-                Debug.Log($"<color=lime>found after {i} iterations</color>");
-                break;
+                bool found = AStar();
+                if (found)
+                {
+                    Debug.Log($"<color=lime>found after {i} iterations</color>");
+                    break;
+                }
+            }
+        }        
+    }
+
+    private void Update()
+    {
+        if (StepByStep)
+        {
+            if (Step)
+            {
+                Step = false;
+                SSIterationsVisual++;
+                bool found = AStar();
+                if (found)
+                {
+                    Debug.Log($"<color=lime>found after {SSIterationsVisual} iterations</color>");
+                }
             }
         }
     }
@@ -86,6 +110,9 @@ public class SistemaMetro : MonoBehaviour
 
     private bool AStar()
     {
+
+        Debug.Log("<color=red>-------------------------</color>");
+
         //1.- Obtener nodos hijo, agregarlos a un arreglo de todos los caminos posibles
         BuscarCaminosHijosNuevos();
 
@@ -93,19 +120,21 @@ public class SistemaMetro : MonoBehaviour
         CostoEstacionSO PosibleOtraEstacion = null;
         CostoCaminoSO caminoMenosCostoso = null;
         CostoEstacionSO NuevaEstacion = null;
-        ObtenerCaminoDeMenorCosto(ref PosibleOtraEstacion, ref caminoMenosCostoso, ref NuevaEstacion);
+        CaminoRecorrido caminoMejor = null;
+        ObtenerCaminoDeMenorCosto(ref PosibleOtraEstacion, ref caminoMenosCostoso, ref NuevaEstacion, ref caminoMejor);
 
         //3.- Moverse al nodo con menor costo, almacenar el costo del camino hasta ese momento y el camino seguido 
-        ModerseAOtroNodo(caminoMenosCostoso, NuevaEstacion);
+        MoverseAOtroNodo(caminoMenosCostoso, NuevaEstacion, caminoMejor);
 
         //4.- Verificar si ese nodo es el objetivo, si si terminoar, si no, repetir
         foreach (var estacionObjetivo in estacionesObjetivo)
         {
-            if(estacionObjetivo == EstacionActual.estacionActualSO.Estacion)
+            if (estacionObjetivo == EstacionActual.estacionActualSO.Estacion)
                 return true;
         }
         return false;
     }
+
     private void BuscarCaminosHijosNuevos()
     {
         foreach (var Camino in caminos)
@@ -148,55 +177,70 @@ public class SistemaMetro : MonoBehaviour
             }
         }
 
+        string log = "";
         foreach (var Estacion in EstacionesVisitadas)
             foreach (var CaminosRestantes in Estacion.CaminosRestantesPorRecorrer)
             {
-                Debug.Log($"{CaminosRestantes.GetEstaciones()[0]} y {CaminosRestantes.GetEstaciones()[1]}");
+                log += $"{CaminosRestantes.GetEstaciones()[0]} y {CaminosRestantes.GetEstaciones()[1]}\n";
             }
+        Debug.Log(log);
     }
 
-    private void ObtenerCaminoDeMenorCosto(ref CostoEstacionSO PosibleOtraEstacion, ref CostoCaminoSO caminoMenosCostoso, ref CostoEstacionSO NuevaEstacion)
+    private void ObtenerCaminoDeMenorCosto(ref CostoEstacionSO PosibleOtraEstacion, ref CostoCaminoSO caminoMenosCostoso, ref CostoEstacionSO NuevaEstacion, ref CaminoRecorrido caminoMejor)
     {
+        string log = "";
         foreach (var EstacionVisitada in EstacionesVisitadas)
         {
             foreach (var Camino in EstacionVisitada.CaminosRestantesPorRecorrer)
             {
                 //revisar cual es el otro camino
-                if (Camino.EstacionesSO[0] == EstacionActual.estacionActualSO)
+                if (Camino.EstacionesSO[0] == EstacionVisitada.estacionActualSO)
                 {
                     PosibleOtraEstacion = Camino.EstacionesSO[1];
                 }
                 else
                     PosibleOtraEstacion = Camino.EstacionesSO[0];
 
-                Debug.Log($"Posible otra estacion: {PosibleOtraEstacion} en camino: {EstacionVisitada.estacionActualSO}");
+                log += $"Posible otra estacion: {PosibleOtraEstacion} en camino: {EstacionVisitada.estacionActualSO}\n\t";
                 //comparar el costo entre todos los nuevos caminos
                 // para cuando es el primer ciclo
                 if (caminoMenosCostoso == null)
                 {
                     caminoMenosCostoso = Camino;
                     NuevaEstacion = PosibleOtraEstacion;
+                    caminoMejor = EstacionVisitada;
+                    log += $"Primera eleccion de <color=orange>{NuevaEstacion}</color>\n";
                 }
 
                 //Calcular el costo de este nuevo nodo
-                Debug.Log($"Hacia {PosibleOtraEstacion.Estacion}: Costo camino: {Camino.costo}, Costo nodo: {PosibleOtraEstacion.costo}");
+                log += $"Hacia {PosibleOtraEstacion.Estacion}:Costo acumulado: {EstacionVisitada.CostoCaminoRecorrido}, Costo camino: {Camino.costo}, Costo nodo: {PosibleOtraEstacion.costo},\t total: <color=yellow>{EstacionVisitada.CostoCaminoRecorrido + Camino.costo + PosibleOtraEstacion.costo}</color>\n";
 
-                int costoActual = this.EstacionActual.CostoCaminoRecorrido + caminoMenosCostoso.costo + EstacionActual.estacionActualSO.costo;
-                int costoOtroCamino = this.EstacionActual.CostoCaminoRecorrido + Camino.costo + PosibleOtraEstacion.costo;
+                int costoActual = caminoMejor.CostoCaminoRecorrido + caminoMenosCostoso.costo + NuevaEstacion.costo;
+                int costoOtroCamino = EstacionVisitada.CostoCaminoRecorrido + Camino.costo + PosibleOtraEstacion.costo;
 
                 if (costoOtroCamino < costoActual)
                 {
+                    log += $"Cambio de camino de <color=orange>{NuevaEstacion}</color> a <color=orange>{PosibleOtraEstacion}</color>\n";
                     caminoMenosCostoso = Camino;
                     NuevaEstacion = PosibleOtraEstacion;
+                    caminoMejor = EstacionVisitada;
                 }
             }
         }
-        
-        Debug.Log($"Camino a seguir: {caminoMenosCostoso.EstacionesSO[0].Estacion.ToString()} a {caminoMenosCostoso.EstacionesSO[1].Estacion.ToString()}");
-        Debug.Log($"Menor costo: {caminoMenosCostoso.costo + NuevaEstacion.costo}");
-        Debug.Log($"camino total menor: {EstacionActual.CostoCaminoRecorrido} + {caminoMenosCostoso.costo} + {NuevaEstacion.costo} = {EstacionActual.CostoCaminoRecorrido + caminoMenosCostoso.costo + NuevaEstacion.costo}: Estacion a moverse: {NuevaEstacion.Estacion.ToString()}");
+
+        Debug.Log(log);
+
+        string log2 = "";
+
+        log2 += $"<color=magenta>Camino a seguir: {caminoMenosCostoso.EstacionesSO[0].Estacion.ToString()} a {caminoMenosCostoso.EstacionesSO[1].Estacion.ToString()}</color>\n";
+        log2 += $"\tMenor costo: {caminoMenosCostoso.costo + NuevaEstacion.costo}";
+        log2 += $"\tcamino total menor: {caminoMejor.CostoCaminoRecorrido} + {caminoMenosCostoso.costo} + {NuevaEstacion.costo} = {EstacionActual.CostoCaminoRecorrido + caminoMenosCostoso.costo + NuevaEstacion.costo}: Estacion a moverse: <color=cyan>{NuevaEstacion.Estacion.ToString()}</color>\n";
+
+        Debug.Log(log2);
+
     }
-    private void ModerseAOtroNodo(CostoCaminoSO caminoMenosCostoso, CostoEstacionSO NuevaEstacion)
+    
+    private void MoverseAOtroNodo(CostoCaminoSO caminoMenosCostoso, CostoEstacionSO NuevaEstacion, CaminoRecorrido caminoMejor)
     {
         //EstacionesVisitadas.Add(new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, EstacionActual.CaminosRestantesPorRecorrer));
 

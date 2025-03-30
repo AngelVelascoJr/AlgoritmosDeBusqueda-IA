@@ -458,10 +458,14 @@ MonoBehaviour:
     CaminosRestantesPorRecorrer: []
     CaminosYaRecorridos: []
     CostoCaminoRecorrido: 0
+    ListaEstacionesRecorridasEnEsteCiclo: []
     PuedeSeguir: 1
   EstacionesVisitadas: []
   caminosPreviosYaRevisados: []
   MaxIterations: 40
+  StepByStep: 1
+  Step: 0
+  SSIterations: 0
 --- !u!4 &1654976719
 Transform:
   m_ObjectHideFlags: 0
