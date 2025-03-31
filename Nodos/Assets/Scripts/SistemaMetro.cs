@@ -161,7 +161,14 @@ public class SistemaMetro : MonoBehaviour
             }
             if (!containsCamino)
             {
-                var camRecorrido = new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, new List<CostoCaminoSO>(), EstacionActual.ListaEstacionesRecorridasEnEsteCiclo);
+
+                List<CostoEstacionSO> CopyListaEstacionesRecorridasEnEsteCiclo = new List<CostoEstacionSO>();
+                foreach (var estacionRecorrida in EstacionActual.ListaEstacionesRecorridasEnEsteCiclo)
+                {
+                    CopyListaEstacionesRecorridasEnEsteCiclo.Add(estacionRecorrida);
+                }
+
+                var camRecorrido = new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, new List<CostoCaminoSO>(), CopyListaEstacionesRecorridasEnEsteCiclo);
                 camRecorrido.CaminosRestantesPorRecorrer.Add(Camino);
                 EstacionesVisitadas.Add(camRecorrido);
             }
@@ -290,6 +297,14 @@ public class SistemaMetro : MonoBehaviour
 			ListaRevisados.Add(estacionesEnLista);
         }
         Debug.Log("Fin de revision de lista");
+    }
+
+    private void OnGUI()
+    {
+        if(GUI.Button(new Rect(0,0,300,200), "Step"))
+        {
+            Step = true;
+        }
     }
 
 }
