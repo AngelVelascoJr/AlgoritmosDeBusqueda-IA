@@ -41,16 +41,18 @@ public class SistemaMetro : MonoBehaviour
         Universidad,
         La_Villa_Basilica
     }
-
+    [Header("Datos")]
     [SerializeField] private EstacionesConTransbordes[] estacionesObjetivo;
 
     [SerializeField] private List<CostoEstacionSO> estaciones;
     [SerializeField] private List<CostoCaminoSO> caminos;
-
-    [SerializeField] private CaminoRecorrido EstacionActual;
+    
+    [Header("Variables")]
+    [SerializeField] private CaminoRecorrido EstacionARevisarEnElSiguienteCiclo;
     [SerializeField] private List<CaminoRecorrido> EstacionesVisitadas;
     [SerializeField] private List<CostoCaminoSO> caminosPreviosYaRevisados;
 
+    [Header("Variables de ciclo")]
     [SerializeField] private int MaxIterations;
 
     [SerializeField] private bool StepByStep;
@@ -110,7 +112,7 @@ public class SistemaMetro : MonoBehaviour
         Debug.Log("<color=red>-------------------------</color>");
 
         //1.- Obtener nodos hijo, agregarlos a un arreglo de todos los caminos posibles
-        BuscarCaminosHijosNuevos();
+        BuscarCaminosEnHijosNuevos();
 
         //2.- Revisar de dicho arreglo, cual es el nodo con menor costo
         CostoEstacionSO PosibleOtraEstacion = null;
@@ -119,7 +121,7 @@ public class SistemaMetro : MonoBehaviour
         CaminoRecorrido caminoMejor = null;
         ObtenerCaminoDeMenorCosto(ref PosibleOtraEstacion, ref caminoMenosCostoso, ref NuevaEstacion, ref caminoMejor);
 
-        Debug.Log($"Camino menos costoso: {caminoMenosCostoso}\nNueva estacion: {NuevaEstacion}\nCamino mejor: [{caminoMejor}]\nEstacion actual SO: {EstacionActual.estacionActualSO}");
+        Debug.Log($"Camino menos costoso: {caminoMenosCostoso}\nNueva estacion: {NuevaEstacion}\nCamino mejor: [{caminoMejor}]\nEstacion actual SO: {EstacionARevisarEnElSiguienteCiclo.EstacionInicialSO}");
 
 
         //3.- Moverse al nodo con menor costo, almacenar el costo del camino hasta ese momento y el camino seguido 
@@ -128,19 +130,19 @@ public class SistemaMetro : MonoBehaviour
         //4.- Verificar si ese nodo es el objetivo, si si terminoar, si no, repetir
         foreach (var estacionObjetivo in estacionesObjetivo)
         {
-            if (estacionObjetivo == EstacionActual.estacionActualSO.Estacion)
+            if (estacionObjetivo == EstacionARevisarEnElSiguienteCiclo.EstacionInicialSO.Estacion)
                 return true;
         }
         return false;
     }
 
-    private void BuscarCaminosHijosNuevos()
+    private void BuscarCaminosEnHijosNuevos()
     {
         foreach (var Camino in caminos)
         {
             var estacionesQueTieneUnCamino = Camino.GetEstaciones().ToList();
             //si el camino no tiene la estacion en la que estamos, continuar la busqueda
-            if (!estacionesQueTieneUnCamino.Contains(EstacionActual.estacionActualSO))
+            if (!estacionesQueTieneUnCamino.Contains(EstacionARevisarEnElSiguienteCiclo.EstacionInicialSO))
             {
                 continue;
             }
@@ -156,7 +158,7 @@ public class SistemaMetro : MonoBehaviour
             int index = -1;
             for (int i = 0; i < EstacionesVisitadas.Count; i++)
             {
-                if (EstacionesVisitadas[i].estacionActualSO == EstacionActual.estacionActualSO)
+                if (EstacionesVisitadas[i].EstacionInicialSO == EstacionARevisarEnElSiguienteCiclo.EstacionInicialSO)
                 {
                     containsCamino = true;
                     index = i;
@@ -164,14 +166,13 @@ public class SistemaMetro : MonoBehaviour
             }
             if (!containsCamino)
             {
-
                 List<CostoEstacionSO> CopyListaEstacionesRecorridasEnEsteCiclo = new List<CostoEstacionSO>();
-                foreach (var estacionRecorrida in EstacionActual.ListaEstacionesRecorridasEnEsteCiclo)
+                foreach (var estacionRecorrida in EstacionARevisarEnElSiguienteCiclo.ListaEstacionesRecorridasEnEsteCiclo)
                 {
                     CopyListaEstacionesRecorridasEnEsteCiclo.Add(estacionRecorrida);
                 }
 
-                var camRecorrido = new CaminoRecorrido(EstacionActual.estacionActualSO, EstacionActual.CostoCaminoRecorrido, new List<CostoCaminoSO>(), CopyListaEstacionesRecorridasEnEsteCiclo);
+                var camRecorrido = new CaminoRecorrido(EstacionARevisarEnElSiguienteCiclo.EstacionInicialSO, EstacionARevisarEnElSiguienteCiclo.CostoCaminoRecorrido, new List<CostoCaminoSO>(), CopyListaEstacionesRecorridasEnEsteCiclo);
                 camRecorrido.CaminosRestantesPorRecorrer.Add(Camino);
                 EstacionesVisitadas.Add(camRecorrido);
             }
@@ -200,14 +201,14 @@ public class SistemaMetro : MonoBehaviour
             foreach (var Camino in EstacionVisitada.CaminosRestantesPorRecorrer)
             {
                 //revisar cual es el otro camino
-                if (Camino.EstacionesSO[0] == EstacionVisitada.estacionActualSO)
+                if (Camino.EstacionesSO[0] == EstacionVisitada.EstacionInicialSO)
                 {
                     PosibleOtraEstacion = Camino.EstacionesSO[1];
                 }
                 else
                     PosibleOtraEstacion = Camino.EstacionesSO[0];
 
-                log += $"Posible otra estacion: {PosibleOtraEstacion} en camino: {EstacionVisitada.estacionActualSO}\n\t";
+                log += $"Posible otra estacion: {PosibleOtraEstacion} en camino: {EstacionVisitada.EstacionInicialSO}\n\t";
                 //comparar el costo entre todos los nuevos caminos
                 // para cuando es el primer ciclo
                 if (caminoMenosCostoso == null)
@@ -249,9 +250,6 @@ public class SistemaMetro : MonoBehaviour
     private void MoverseAOtroNodo(CostoCaminoSO caminoMenosCostoso, CostoEstacionSO NuevaEstacion, CaminoRecorrido caminoMejor)
     {
 
-
-
-
         int index = 0;
         for (int j = 0; j < caminoMejor.CaminosRestantesPorRecorrer.Count; j++)
         {
@@ -262,10 +260,10 @@ public class SistemaMetro : MonoBehaviour
             }
         }
 
-        EstacionActual.SetEstacionActual(NuevaEstacion);
-        EstacionActual.AddToCostoCaminoRecorrido(caminoMenosCostoso.costo);
+        EstacionARevisarEnElSiguienteCiclo.SetEstacionActual(NuevaEstacion);
+        EstacionARevisarEnElSiguienteCiclo.AddToCostoCaminoRecorrido(caminoMenosCostoso.costo);
         
-        EstacionActual.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
+        caminoMejor.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
         caminoMejor.CaminosYaRecorridos.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
         caminosPreviosYaRevisados.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
         caminoMejor.CaminosRestantesPorRecorrer.RemoveAt(index);        
