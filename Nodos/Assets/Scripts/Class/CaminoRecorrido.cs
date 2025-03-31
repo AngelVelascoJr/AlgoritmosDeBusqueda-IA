@@ -61,4 +61,9 @@ public class CaminoRecorrido
         CostoCaminoRecorrido += Costo;
     }
 
+    public override string ToString()
+    {
+        return $"Estacion actual: {estacionActualSO}, costo del camino recorrido: {CostoCaminoRecorrido}";
+    }
+
 }

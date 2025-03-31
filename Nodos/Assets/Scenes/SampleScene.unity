@@ -463,7 +463,7 @@ MonoBehaviour:
     PuedeSeguir: 1
   EstacionesVisitadas: []
   caminosPreviosYaRevisados: []
-  MaxIterations: 40
+  MaxIterations: 3
   StepByStep: 1
   Step: 0
   SSIterationsVisual: 0

@@ -119,6 +119,9 @@ public class SistemaMetro : MonoBehaviour
         CaminoRecorrido caminoMejor = null;
         ObtenerCaminoDeMenorCosto(ref PosibleOtraEstacion, ref caminoMenosCostoso, ref NuevaEstacion, ref caminoMejor);
 
+        Debug.Log($"Camino menos costoso: {caminoMenosCostoso}\nNueva estacion: {NuevaEstacion}\nCamino mejor: [{caminoMejor}]\nEstacion actual SO: {EstacionActual.estacionActualSO}");
+
+
         //3.- Moverse al nodo con menor costo, almacenar el costo del camino hasta ese momento y el camino seguido 
         MoverseAOtroNodo(caminoMenosCostoso, NuevaEstacion, caminoMejor);
 
@@ -245,6 +248,10 @@ public class SistemaMetro : MonoBehaviour
     
     private void MoverseAOtroNodo(CostoCaminoSO caminoMenosCostoso, CostoEstacionSO NuevaEstacion, CaminoRecorrido caminoMejor)
     {
+
+
+
+
         int index = 0;
         for (int j = 0; j < caminoMejor.CaminosRestantesPorRecorrer.Count; j++)
         {
@@ -254,13 +261,14 @@ public class SistemaMetro : MonoBehaviour
                 break;
             }
         }
-        caminoMejor.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
-        caminoMejor.CaminosYaRecorridos.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
-        caminosPreviosYaRevisados.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
-        caminoMejor.CaminosRestantesPorRecorrer.RemoveAt(index);        
 
         EstacionActual.SetEstacionActual(NuevaEstacion);
         EstacionActual.AddToCostoCaminoRecorrido(caminoMenosCostoso.costo);
+        
+        EstacionActual.ListaEstacionesRecorridasEnEsteCiclo.Add(NuevaEstacion);
+        caminoMejor.CaminosYaRecorridos.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
+        caminosPreviosYaRevisados.Add(caminoMejor.CaminosRestantesPorRecorrer[index]);
+        caminoMejor.CaminosRestantesPorRecorrer.RemoveAt(index);        
     }
 
     private void RevisarDuplicados<r1>(List<r1> listaARevisar)
