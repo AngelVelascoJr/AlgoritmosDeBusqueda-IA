@@ -7,17 +7,22 @@ using UnityEngine;
 public class CaminoRecorrido
 {
     public SistemaMetro.EstacionesConTransbordes estacionActualVisual;
-    public CostoNodoSO estacionActualSO;
+    public CostoEstacionSO EstacionInicialSO;
     public List<CostoCaminoSO> CaminosRestantesPorRecorrer;
+    public List<CostoCaminoSO> CaminosYaRecorridos;
     public int CostoCaminoRecorrido = 0;
+
+    public List<CostoEstacionSO> ListaEstacionesRecorridasEnEsteCiclo;
 
     public bool PuedeSeguir = true;
 
-    public CaminoRecorrido(CostoNodoSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer)
+    public CaminoRecorrido(CostoEstacionSO nodoSO, int CostoCaminoRecorrido, List<CostoCaminoSO> caminosPorRecorrer, List<CostoEstacionSO> ListaEstacionesRecorridasEnEsteCiclo)
     {
-        estacionActualSO = nodoSO;
+        EstacionInicialSO = nodoSO;
         this.CostoCaminoRecorrido = CostoCaminoRecorrido;    
         CaminosRestantesPorRecorrer = caminosPorRecorrer;
+        CaminosYaRecorridos = new();
+        this.ListaEstacionesRecorridasEnEsteCiclo = ListaEstacionesRecorridasEnEsteCiclo;
     }
 
     public void DetenerRecorrido()
@@ -40,15 +45,15 @@ public class CaminoRecorrido
         return estacionesRecorridas;
     }*/
 
-    public CostoNodoSO GetEstacionActualSO()
+    public CostoEstacionSO GetEstacionActualSO()
     {
-        return estacionActualSO;
+        return EstacionInicialSO;
     }
 
-    public void SetEstacionActual(CostoNodoSO Estacion)
+    public void SetEstacionActual(CostoEstacionSO Estacion)
     {
-        estacionActualSO = Estacion;
-        estacionActualVisual = estacionActualSO.Estacion;
+        EstacionInicialSO = Estacion;
+        estacionActualVisual = EstacionInicialSO.Estacion;
     }
 
     public void AddToCostoCaminoRecorrido(int Costo)
@@ -56,6 +61,9 @@ public class CaminoRecorrido
         CostoCaminoRecorrido += Costo;
     }
 
-
+    public override string ToString()
+    {
+        return $"Estacion actual: {EstacionInicialSO}, costo del camino recorrido: {CostoCaminoRecorrido}";
+    }
 
 }

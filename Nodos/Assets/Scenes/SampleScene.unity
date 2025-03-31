@@ -452,15 +452,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38d963f668b06fd4fb7c2f6d5f808e03, type: 2}
   - {fileID: 11400000, guid: 4c9c7ddd5427ef74088499b2dea9e4c0, type: 2}
   - {fileID: 11400000, guid: f40a88ac35fb1ce4381bc7f93ff15d5b, type: 2}
-  EstacionActual:
+  EstacionARevisarEnElSiguienteCiclo:
     estacionActualVisual: 0
-    estacionActualSO: {fileID: 11400000, guid: 7ba4d3f51ea27b3418576bc4f5271063, type: 2}
+    EstacionInicialSO: {fileID: 11400000, guid: 7ba4d3f51ea27b3418576bc4f5271063, type: 2}
     CaminosRestantesPorRecorrer: []
+    CaminosYaRecorridos: []
     CostoCaminoRecorrido: 0
-    PuedeSeguir: 1
+    ListaEstacionesRecorridasEnEsteCiclo: []
+    PuedeSeguir: 0
   EstacionesVisitadas: []
-  caminosPreviosNoRevisados: []
-  MaxIterations: 2
+  caminosPreviosYaRevisados: []
+  MaxIterations: 50
+  StepByStep: 0
+  Step: 0
+  SSIterationsVisual: 0
 --- !u!4 &1654976719
 Transform:
   m_ObjectHideFlags: 0
