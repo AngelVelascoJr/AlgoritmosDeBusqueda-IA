@@ -75,3 +75,5 @@ sysinfo.txt
 **/UdonSharp/PrefabBuild/
 **/UdonSharp/PrefabBuild.meta
  
+#Jupyter Notebook checkpoints
+**/.ipynb_checkpoints/
