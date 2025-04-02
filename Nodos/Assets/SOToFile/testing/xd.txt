@@ -1,0 +1,1 @@
+{"testingEnum":"chico","testingfloat":5.0,"testingDateTimeClass":{"year":6,"month":8,"day":8},"testingTimeSpanClass":{"hours":69,"minutes":2,"seconds":1,"TotalMilliseconds":248521000.0,"TotalMinutes":4142.0166666666664,"TotalSeconds":248520.0}}
