@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 [CreateAssetMenu(menuName = "ScriptableObjects/Pelicula")]
 public class PeliculaSO : ScriptableObject
 {

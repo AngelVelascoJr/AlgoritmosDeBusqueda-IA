@@ -1,0 +1,1 @@
+{"PeliName":"El telefono negro","CalifIMDB":6.9,"Duracion":{"hours":1,"minutes":43,"seconds":0,"TotalMilliseconds":6180000.0,"TotalMinutes":103.0,"TotalSeconds":6180.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"El_telefono_negro","hideFlags":0}

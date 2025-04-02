@@ -1,0 +1,1 @@
+{"PeliName":"Halloween","CalifIMDB":6.0,"Duracion":{"hours":1,"minutes":49,"seconds":0,"TotalMilliseconds":6540000.0,"TotalMinutes":109.0,"TotalSeconds":6540.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"Halloween","hideFlags":0}

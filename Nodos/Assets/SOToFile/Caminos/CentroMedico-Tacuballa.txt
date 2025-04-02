@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"Tacubaya","costo":10,"name":"Tacubaya","hideFlags":0},{"Estacion":"CentroMedico","costo":7,"name":"CentroMedico","hideFlags":0}],"costo":6,"name":"CentroMedico-Tacuballa","hideFlags":0}

@@ -1,0 +1,1 @@
+{"Estacion":"Garibaldi","costo":10,"name":"Garibaldi","hideFlags":0}

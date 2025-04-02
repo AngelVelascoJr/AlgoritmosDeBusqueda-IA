@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"Tacuba","costo":10,"name":"Tacuba","hideFlags":0},{"Estacion":"Balderas","costo":8,"name":"Balderas","hideFlags":0}],"costo":12,"name":"Banderas-tacubaya","hideFlags":0}

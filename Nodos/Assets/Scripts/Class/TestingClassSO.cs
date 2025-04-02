@@ -2,7 +2,8 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class TestingClassSO
+[CreateAssetMenu(menuName = "ScriptableObjects/Testing/TestClassSO")]
+public class TestingClassSO : ScriptableObject
 {
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TestingEnum

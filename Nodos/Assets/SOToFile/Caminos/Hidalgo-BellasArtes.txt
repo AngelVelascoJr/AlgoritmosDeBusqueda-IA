@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"Hidalgo","costo":10,"name":"Hidalgo","hideFlags":0},{"Estacion":"Bellas_artes","costo":10,"name":"BellasArtes","hideFlags":0}],"costo":2,"name":"Hidalgo-BellasArtes","hideFlags":0}

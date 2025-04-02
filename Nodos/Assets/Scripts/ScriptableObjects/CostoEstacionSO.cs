@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 [CreateAssetMenu(menuName = "ScriptableObjects/Costo de la estacion")]
 public class CostoEstacionSO : ScriptableObject
 {

@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SistemaMetro : MonoBehaviour
 {
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EstacionesConTransbordes
     {
         Pantitlan,

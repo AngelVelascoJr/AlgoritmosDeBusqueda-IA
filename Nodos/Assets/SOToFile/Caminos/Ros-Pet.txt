@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"El_rosario","costo":1,"name":"ElRosario","hideFlags":0},{"Estacion":"Instituto_del_petroleo","costo":6,"name":"Inst_Petroleo","hideFlags":0}],"costo":12,"name":"Ros-Pet","hideFlags":0}
