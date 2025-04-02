@@ -1,0 +1,1 @@
+{"PeliName":"Hablame","CalifIMDB":7.1,"Duracion":{"hours":1,"minutes":35,"seconds":0,"TotalMilliseconds":5700000.0,"TotalMinutes":95.0,"TotalSeconds":5700.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"Hablame","hideFlags":0}

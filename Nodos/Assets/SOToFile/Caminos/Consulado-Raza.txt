@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"Consulado","costo":4,"name":"Consulado","hideFlags":0},{"Estacion":"La_Raza","costo":6,"name":"LaRaza","hideFlags":0}],"costo":6,"name":"Consulado-Raza","hideFlags":0}

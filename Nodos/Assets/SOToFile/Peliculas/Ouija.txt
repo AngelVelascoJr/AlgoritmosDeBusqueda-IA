@@ -1,0 +1,1 @@
+{"PeliName":"Ouija","CalifIMDB":4.5,"Duracion":{"hours":1,"minutes":29,"seconds":0,"TotalMilliseconds":5340000.0,"TotalMinutes":89.0,"TotalSeconds":5340.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"Ouija","hideFlags":0}

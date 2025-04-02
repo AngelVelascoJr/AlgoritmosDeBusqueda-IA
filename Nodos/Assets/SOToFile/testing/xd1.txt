@@ -1,0 +1,1 @@
+{"testingEnum":"xd","testingfloat":0.56,"testingDateTimeClass":{"year":1,"month":5,"day":0},"testingTimeSpanClass":{"hours":13,"minutes":0,"seconds":5,"TotalMilliseconds":46805000.0,"TotalMinutes":780.08333333333337,"TotalSeconds":46800.0},"name":"Test2","hideFlags":0}

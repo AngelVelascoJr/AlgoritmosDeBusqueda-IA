@@ -1,0 +1,1 @@
+{"PeliName":"El conjuro","CalifIMDB":7.5,"Duracion":{"hours":1,"minutes":52,"seconds":0,"TotalMilliseconds":6720000.0,"TotalMinutes":112.0,"TotalSeconds":6720.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"El_conjuro","hideFlags":0}

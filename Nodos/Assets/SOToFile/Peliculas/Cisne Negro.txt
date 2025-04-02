@@ -1,0 +1,1 @@
+{"PeliName":"Cisne negro","CalifIMDB":8.0,"Duracion":{"hours":1,"minutes":48,"seconds":0,"TotalMilliseconds":6480000.0,"TotalMinutes":108.0,"TotalSeconds":6480.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"Cisne Negro","hideFlags":0}

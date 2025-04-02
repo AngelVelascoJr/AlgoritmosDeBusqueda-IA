@@ -1,0 +1,1 @@
+{"Estacion":"Hidalgo","costo":10,"name":"Hidalgo","hideFlags":0}
