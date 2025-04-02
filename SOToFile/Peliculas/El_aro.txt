@@ -1,0 +1,1 @@
+{"PeliName":"El aro","CalifIMDB":7.0,"Duracion":{"hours":1,"minutes":55,"seconds":0,"TotalMilliseconds":6900000.0,"TotalMinutes":115.0,"TotalSeconds":6900.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"El_aro","hideFlags":0}

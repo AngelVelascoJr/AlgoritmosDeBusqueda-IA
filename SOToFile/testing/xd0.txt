@@ -1,0 +1,1 @@
+{"testingEnum":"largo","testingfloat":-0.1,"testingDateTimeClass":{"year":0,"month":69,"day":0},"testingTimeSpanClass":{"hours":0,"minutes":549,"seconds":0,"TotalMilliseconds":32940000.0,"TotalMinutes":549.0,"TotalSeconds":32940.0},"name":"Test1","hideFlags":0}

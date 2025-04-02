@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"Balderas","costo":8,"name":"Balderas","hideFlags":0},{"Estacion":"CentroMedico","costo":7,"name":"CentroMedico","hideFlags":0}],"costo":6,"name":"CentroMedico-Balderas","hideFlags":0}

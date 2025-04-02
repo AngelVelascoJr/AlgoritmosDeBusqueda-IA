@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"San_Lazaro","costo":5,"name":"SnLazaro","hideFlags":0},{"Estacion":"Candelaria","costo":5,"name":"Candelaria","hideFlags":0}],"costo":2,"name":"Candelaria-sanLazaro","hideFlags":0}

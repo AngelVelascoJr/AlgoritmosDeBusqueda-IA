@@ -1,0 +1,1 @@
+{"Estacion":"Bellas_artes","costo":10,"name":"BellasArtes","hideFlags":0}

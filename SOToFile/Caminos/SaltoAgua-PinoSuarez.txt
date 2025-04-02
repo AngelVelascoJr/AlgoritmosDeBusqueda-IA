@@ -1,0 +1,1 @@
+{"EstacionesSO":[{"Estacion":"Salto_del_agua","costo":7,"name":"SaltoAgua","hideFlags":0},{"Estacion":"Pino_suarez","costo":6,"name":"PinoSuarez","hideFlags":0}],"costo":4,"name":"SaltoAgua-PinoSuarez","hideFlags":0}

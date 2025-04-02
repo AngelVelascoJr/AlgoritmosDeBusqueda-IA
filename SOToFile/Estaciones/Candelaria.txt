@@ -1,0 +1,1 @@
+{"Estacion":"Candelaria","costo":5,"name":"Candelaria","hideFlags":0}

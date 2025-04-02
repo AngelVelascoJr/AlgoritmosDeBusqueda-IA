@@ -1,0 +1,1 @@
+{"PeliName":"El resplandor","CalifIMDB":8.4,"Duracion":{"hours":2,"minutes":26,"seconds":0,"TotalMilliseconds":8760000.0,"TotalMinutes":146.0,"TotalSeconds":8760.0},"FechaDeLanzamiento":{"year":0,"month":0,"day":0},"name":"El_resplandor","hideFlags":0}
