@@ -42,7 +42,7 @@ public class ConvertSOToFile : MonoBehaviour
             CreateFile(path, message);
             count++;
         }
-        Debug.Log($"Guardados {count} Caminos");
+        Debug.Log($"<color=red>Guardados {count} Caminos</color>");
         count = 0;
         foreach (var estacion in Estaciones)
         {
@@ -56,7 +56,7 @@ public class ConvertSOToFile : MonoBehaviour
             CreateFile(path, message);
             count++;
         }
-        Debug.Log($"Guardados {count} Estaciones");
+        Debug.Log($"<color=red>Guardados {count} Estaciones</color>");
         count = 0;
         foreach (var pelicula in Peliculas)
         {
@@ -70,7 +70,7 @@ public class ConvertSOToFile : MonoBehaviour
             CreateFile(path, message);
             count++;
         }
-        Debug.Log($"Guardados {count} Peliculas");
+        Debug.Log($"<color=red>Guardados {count} Peliculas</color>");
         Debug.Log("<color=yellow>Fin del programa</color>");
     }
 
