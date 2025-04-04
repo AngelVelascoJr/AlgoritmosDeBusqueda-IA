@@ -16,16 +16,16 @@ Integrantes:
 
 ## Parte 1: A aplicado a rutas de metro
 
-**Descripción del problema:**
+### Descripción del problema:
 Un turista está visitando una ciudad y quiere encontrar la ruta más rápida entre dos estaciones de metro. Se tiene información sobre las conexiones entre estaciones y una estimación del tiempo de viaje entre ellas.
 
-**Tareas:**
+### Tareas:
 1. Modelar el mapa del metro como un grafo, donde los nodos son estaciones y los arcos representan conexiones con tiempos de viaje.
 2. Implementar el algoritmo A para encontrar la mejor ruta entre dos estaciones dadas.
 3. Probar el algoritmo con al menos dos pares de estaciones y analizar los resultados.
 (probabilidad)
 
-## Prueba del algoritmo
+### Prueba del algoritmo
 
 Para la prueba del algoritmo, se tomo todo el sistema de metro y las 4 estaciones objetivo :::::::::::::
 
@@ -40,6 +40,21 @@ Al utilizar la estacion *pantitlan* como estacion inicial, obtenemos que la esta
 
 ![ImagenAStar](./Images/AStarResults.jpeg)
 
+## Parte 2: Búsqueda por ascenso de colinas en recomendación de películas 
+### Descripción del problema: 
+Un usuario quiere encontrar la mejor película de acción o terror según sus preferencias (por ejemplo, alta calificación y duración moderada). 
+
+### Tareas: 
+1. Representar un conjunto de películas como un espacio de búsqueda, con atributos como calificación IMDB, duración y año de lanzamiento. 
+2. Implementar búsqueda por ascenso de colinas para encontrar una película óptima según una función de evaluación (por ejemplo, (calificación - |duración - 120|)). 
+3. Probar la implementación con una lista de al menos 10 películas.
+
+Para este ejercicio realizamos Investigamos películas de terror, la duración que tenían y las estrellas que habían ganado. El mapa de árbol se fue armando de manera en que las peliculas de mayor duracion fueron nuestras primeras ramas, en este caso **“A”, “D”** e **“I”**, las cuales duraban mas de 2:00:00 horas , porteriormente las peliculas con una duración de película entre 1:50:00 a 2:00:00, las cuales fueron **“B”** y **“E”** ,con una duración de 1:40:00 a 1:50:00 las películas **“C”, “F” y “J”**  y por último las de menor duración que son nuestra solución **“H” y “G”**.
+El costo fueron las estrellas qué cada película tiene según *IMDB*.
+
+![ImagenColinas](./Images/Colinas.jpeg)
+
+Primero checamos cuál es tenía el costo más bajo en la primera ramificación y ahí nos dimos cuenta qué fue el nodo “D” para esto de nuestra tabla anotamos los 3 nodos, Posterior checamos el nodo B y E  y escogemos el menor de estos es así que nos vamos con él su ramificación es J, y posteriormente la ramificación de J es G llevándonos a la primera solución. En este caso cuando queremos ir a la segunda solución nos tenemos que desplazar otra vez hasta la primera ramificación y el menor es I posteriormente vemos que y lleva igualmente a él ramificación que ya habíamos visto entonces nos regresamos al Nodo A posteriormente al B posteriormente, el B cuenta con 2 ramificaciones y el menor es F y  la última ramificación es **H** llegando así a nuestra solución 2
 
 ## Parte 3: Algoritmos Genéticos para Optimización de Rutas de Metro
 ### Descripción del problema
