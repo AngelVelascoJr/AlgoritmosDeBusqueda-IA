@@ -11,7 +11,8 @@ Integrantes:
 - Juarez valdez Israel 
 - Portillo Jaramillo David
 - Velasco Pérez Angel David
-- Villanueva Pérez Vianey 
+- Villanueva Pérez Vianey
+- Zarco Evandher
 
 ## Parte 1: A aplicado a rutas de metro
 
