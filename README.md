@@ -38,4 +38,4 @@ al modificar la lista de estaciones al crear una instancia de la funcion **Siste
 
 Al utilizar la estacion *pantitlan* como estacion inicial, obtenemos que la estacion mas cercana segun el costo de los caminos y el costo de los nodos es **La villa Basilica** como se puede observar en el codigo y en la siguiente imagen.
 
-![ImagenAStar](./Images/AStarResult.jpeg)
+![ImagenAStar](./Images/AStarResults.jpeg)
