@@ -31,16 +31,16 @@ Un turista está visitando una ciudad y quiere encontrar la ruta más rápida en
 
 ### Prueba del algoritmo
 
-Para la prueba del algoritmo, se tomo todo el sistema de metro y las 4 estaciones objetivo :::::::::::::
+Para la prueba del algoritmo, se tomo todo el sistema de metro y las 4 estaciones objetivo (El rosario, Mixcoac, Universidad y La villa Basilica)
 
-el codigo se desarrollo en python y se encuentra dentro de la carpeta Python, tambien se puede acceder a el desde [aqui](./Python/AStar.ipynb).
+El codigo se desarrollo en python y se encuentra dentro de la carpeta Python, tambien se puede acceder a el desde [aqui](./Python/AStar.ipynb).
 
 Es posible modificar la estacion en las que se requiera iniciar al modificar el nombre de la variable estInicialStr dentro de la seccion [Conversion de JsonFile a Datos](./Python/AStar.ipynb#'ConversiondeJsonFileaDatos')
 
 De la misma forma, es posible cambiar las estaciones objetivo 
 al modificar la lista de estaciones al crear una instancia de la funcion **SistemaMetro**.
 
-Al utilizar la estacion *pantitlan* como estacion inicial, obtenemos que la estacion mas cercana segun el costo de los caminos y el costo de los nodos es **La villa Basilica** como se puede observar en el codigo y en la siguiente imagen.
+Al utilizar la estacion *pantitlan* como estacion inicial, obtenemos que la estacion mas cercana segun el costo de los caminos y el costo de los nodos es **La villa Basilica**, ademas, en la siguiente imagen se pueden observar las estaciones que se recorrieron para llegar a la estacion objetivo, así como el costo total, el recorrido completo de las estaciones recorridas por el codigo se encuentran en el documento.
 
 ![ImagenAStar](./Images/AStarResults.jpeg)
 
