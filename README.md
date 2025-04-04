@@ -12,7 +12,7 @@ Integrantes:
 - Portillo Jaramillo David
 - Velasco Pérez Angel David
 - Villanueva Pérez Vianey
-- Zarco Evandher
+- Evandher Joel Zarco Hernández
 
 ## Parte 1: A aplicado a rutas de metro
 
@@ -24,6 +24,10 @@ Un turista está visitando una ciudad y quiere encontrar la ruta más rápida en
 2. Implementar el algoritmo A para encontrar la mejor ruta entre dos estaciones dadas.
 3. Probar el algoritmo con al menos dos pares de estaciones y analizar los resultados.
 (probabilidad)
+
+### Desarrollo
+
+![ImagenAStarDesarrollo](./Images/AStar.jpeg)
 
 ### Prueba del algoritmo
 
@@ -48,6 +52,8 @@ Un usuario quiere encontrar la mejor película de acción o terror según sus pr
 1. Representar un conjunto de películas como un espacio de búsqueda, con atributos como calificación IMDB, duración y año de lanzamiento. 
 2. Implementar búsqueda por ascenso de colinas para encontrar una película óptima según una función de evaluación (por ejemplo, (calificación - |duración - 120|)). 
 3. Probar la implementación con una lista de al menos 10 películas.
+
+### Desarrollo
 
 Para este ejercicio realizamos Investigamos películas de terror, la duración que tenían y las estrellas que habían ganado. El mapa de árbol se fue armando de manera en que las peliculas de mayor duracion fueron nuestras primeras ramas, en este caso **“A”, “D”** e **“I”**, las cuales duraban mas de 2:00:00 horas , porteriormente las peliculas con una duración de película entre 1:50:00 a 2:00:00, las cuales fueron **“B”** y **“E”** ,con una duración de 1:40:00 a 1:50:00 las películas **“C”, “F” y “J”**  y por último las de menor duración que son nuestra solución **“H” y “G”**.
 El costo fueron las estrellas qué cada película tiene según *IMDB*.
