@@ -39,3 +39,46 @@ al modificar la lista de estaciones al crear una instancia de la funcion **Siste
 Al utilizar la estacion *pantitlan* como estacion inicial, obtenemos que la estacion mas cercana segun el costo de los caminos y el costo de los nodos es **La villa Basilica** como se puede observar en el codigo y en la siguiente imagen.
 
 ![ImagenAStar](./Images/AStarResults.jpeg)
+
+
+## Parte 3: Algoritmos Genéticos para Optimización de Rutas de Metro
+### Descripción del problema
+Se busca encontrar la mejor combinación de estaciones para optimizar una ruta turística en metro, maximizando la cantidad de sitios visitados en un tiempo determinado.
+
+### Tareas
+1. Representar una ruta en metro como un cromosoma (lista de estaciones en un orden determinado).
+2. Definir una función de aptitud basada en el tiempo de viaje y la cantidad de sitios visitados.
+3. Implementar un algoritmo genético con selección, cruza y mutación para encontrar la mejor ruta.
+4. Probar el algoritmo con un conjunto de 10 estaciones y analizar los resultados.
+
+### Implementación
+El algoritmo genético se implementó en Python utilizando el framework de Google Colab. El código se encuentra en la carpeta Python y se llama  el archivo Algoritmos_Geneticos.ipynb tambien se puede acceder a el desde [aqui](./Python/Algoritmos_Geneticos.ipynb).
+
+Se tomo el sistema del metro representado en el siguiente grafo:
+
+![Grafo Metro](./Images/grafo_metro.png)
+
+### Análisis de Resultados
+En la siguiente imagen podemos ver los resultados tras 300 iteraciones, tenemos un rendimiento prácticamente excelente, también se puede visualizar un poco de la población inicial y final.
+
+![Resultados](./Images/resultados_text.png)
+
+Nuestro análisis de resultados se basará en la gráfica "Average Fitness vs Iterations", que se muestra a continuación:
+
+![Average Fitness vs Iterations](./Images/resultados_gráfica.png)
+
+**Interpretación de la gráfica:**
+La gráfica muestra la evolución del fitness promedio de la población a lo largo de las generaciones. Se observa que el fitness promedio aumenta con el tiempo y tiende a estabilizarse en un valor, lo que indica que el algoritmo está convergiendo hacia una solución óptima.
+
+**Observaciones:**
+
+* **Convergencia:** El algoritmo converge relativamente rápido en las primeras iteraciones, lo que sugiere que la función de fitness y los operadores genéticos son efectivos para encontrar buenas soluciones.
+* **Estabilidad:** Después de un cierto número de iteraciones, el fitness promedio tiende hacia ciertos valores, lo que indica que el algoritmo ha encontrado una solución óptima o cercana al óptimo.
+* **Fitness del mejor individuo:** 243.57. Este valor es el esperado en comparación con el fitness del modelo objetivo, lo que indica que el algoritmo ha encontrado una buena solución.
+* **Tiempo de viaje y sitios visitados:** Se encontró una solución que permite visitar **76 sitios turísticos** en **24 minutos**. Estos valores indican que el mejor individuo **cumple** con los criterios solicitados.
+
+### Conclusiones
+* El algoritmo genético es efectiva para la optimización de rutas de metro.
+* La función de fitness y los operadores genéticos utilizados son adecuados para el problema.
+* El algoritmo converge hacia una solución óptima o cercana al óptimo.
+* El mejor individuo encontrado representa una buena solución al problema.
