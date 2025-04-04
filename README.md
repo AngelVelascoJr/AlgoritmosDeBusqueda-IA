@@ -67,22 +67,26 @@ Se busca encontrar la mejor combinación de estaciones para optimizar una ruta t
 4. Probar el algoritmo con un conjunto de 10 estaciones y analizar los resultados.
 
 ### Implementación
-El algoritmo genético se implementó en Python utilizando el framework de Google Colab. El código se encuentra en la carpeta Python y se llama  el archivo Algoritmos_Geneticos.ipynb tambien se puede acceder a el desde [aqui](./Python/Algoritmos_Geneticos.ipynb).
+El algoritmo genético se implementó en Python utilizando el framework de Google Colab. El código se encuentra en la carpeta Python y se llama Práctica2_AlgoritmoGen.ipynb, tambien se puede acceder a el desde [aqui](./Python/Práctica2_AlgoritmoGen.ipynb).
 
 Se tomo el sistema del metro representado en el siguiente grafo:
-
 ![Grafo Metro](./Images/grafo_metro.png)
 
 ### Análisis de Resultados
 En la siguiente imagen podemos ver los resultados tras 300 iteraciones, tenemos un rendimiento prácticamente excelente, también se puede visualizar un poco de la población inicial y final.
-
 ![Resultados](./Images/resultados_text.png)
 
-Nuestro análisis de resultados se basará en la gráfica "Average Fitness vs Iterations", que se muestra a continuación:
+La siguiente imagen es la representación gráfica del rendimiento promedio de los individuos tras realizar 300 iteraciones, vemos que en la parte final, el mejor individuo de la población alcanza el fitness esperado.
 
 ![Average Fitness vs Iterations](./Images/resultados_gráfica.png)
 
+Nuestro análisis de resultados se basará en la gráfica "Average Fitness vs Iterations", que se muestra a continuación, para el cuál se realizaron 1000 iteraciones:
+
+![Average Fitness vs Iterations](./Images/resultados_gráfica_1000iterations.png)
+
+
 **Interpretación de la gráfica:**
+
 La gráfica muestra la evolución del fitness promedio de la población a lo largo de las generaciones. Se observa que el fitness promedio aumenta con el tiempo y tiende a estabilizarse en un valor, lo que indica que el algoritmo está convergiendo hacia una solución óptima.
 
 **Observaciones:**
@@ -92,8 +96,10 @@ La gráfica muestra la evolución del fitness promedio de la población a lo lar
 * **Fitness del mejor individuo:** 243.57. Este valor es el esperado en comparación con el fitness del modelo objetivo, lo que indica que el algoritmo ha encontrado una buena solución.
 * **Tiempo de viaje y sitios visitados:** Se encontró una solución que permite visitar **76 sitios turísticos** en **24 minutos**. Estos valores indican que el mejor individuo **cumple** con los criterios solicitados.
 
-### Conclusiones
-* El algoritmo genético es efectiva para la optimización de rutas de metro.
+
+#### Conclusiones
+
+* El algoritmo genético es efectivo para la optimización de rutas de metro.
 * La función de fitness y los operadores genéticos utilizados son adecuados para el problema.
 * El algoritmo converge hacia una solución óptima o cercana al óptimo.
 * El mejor individuo encontrado representa una buena solución al problema.
