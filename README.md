@@ -27,6 +27,24 @@ Un turista está visitando una ciudad y quiere encontrar la ruta más rápida en
 
 ### Desarrollo
 
+Para la realización del primer ejercicio nos basamos en el mapa del transporte colectivo metro identificando el punto de partida (pantitlan) hasta los 4 distintos puntos meta o soluciones (El Rosario, la villa,Michoacán y Universidad) 
+
+![ImagenAStarEstaciones](./Images/AStarEstaciones.jpeg)
+
+Iniciamos considerando una puntuación para cada uno de los transbordes existentes en el metro así como el desplazamiento entre estaciones de 2 min por ende existían tramos o trayectos más largos que otros.
+
+Iniciamos obteniendo el valor de cada uno de los nodos mediante la función *f()= camino + nodo* partiendo deste pantitlan, siendo que de ese punto se originan 3 nodos obteniendo los valores:
+- Oceanía:8
+- San Lázaro:17
+- jamaica:16
+
+Entre estas opciones escogemos el valor menor y hacemos la función con los hijos del mismo obteniendo:
+- Consulado:16
+- San Lázaro:17
+
+Posteriormente entre todas las opciones no exploradas(aún contado la de san Lázaro y Oceanía) escogemos el menor valor de ellas siendo la de Jamaica para posteriormente anotar el valor de los hijos.
+Realizamos este procedimiento hasta que encontremos el valor solución el cual en nuestro caso fue **La villa Basilica** con un valor de 21.
+
 ![ImagenAStarDesarrollo](./Images/AStar.jpeg)
 
 ### Prueba del algoritmo
